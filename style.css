@@ -159,6 +159,16 @@ input[type="range"]::-moz-range-thumb {
 }
 .toggle-label { font-size: 12px; color: var(--text-secondary); }
 
+/* Radio groups */
+.radio-group {
+    display: flex; gap: 15px; margin-top: 5px;
+}
+.radio-label {
+    font-size: 12px; color: var(--text-secondary); cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+}
+.radio-label input { accent-color: var(--accent); cursor: pointer; }
+
 /* Info grid */
 .info-grid { display: flex; flex-direction: column; gap: 6px; }
 .info-row {
@@ -168,6 +178,17 @@ input[type="range"]::-moz-range-thumb {
 .info-row .lbl { font-size: 11px; color: var(--text-muted); }
 .info-row .val {
     font-size: 12px; font-weight: 600; color: var(--text-secondary);
+}
+
+/* Vector box */
+.vector-box {
+    margin-top: 10px; padding: 10px; border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border);
+    font-family: monospace; font-size: 11px; color: var(--text-secondary);
+}
+.vector-title {
+    font-size: 10px; font-family: 'Inter', sans-serif;
+    color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;
 }
 
 /* Coord table */
