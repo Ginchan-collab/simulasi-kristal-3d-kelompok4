@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Struktur Kristal 3D</title>
+    <meta name="description" content="Simulasi interaktif struktur kristal 3D: BCC, FCC, HCP, NaCl, dan Intan">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== SIDEBAR ==================== -->
+<div id="sidebar">
+    <div class="sidebar-header">
+        <h1>&#x1F52C; Crystal Sim 3D</h1>
+        <p class="sub">Simulasi Struktur Kristal Interaktif</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Tipe Struktur Kristal</div>
+        <div class="btn-grid">
+            <button class="structure-btn active" data-type="BCC">
+                <span class="dot"></span> BCC &mdash; Body-Centered Cubic
+            </button>
+            <button class="structure-btn" data-type="FCC">
+                <span class="dot"></span> FCC &mdash; Face-Centered Cubic
+            </button>
+            <button class="structure-btn" data-type="HCP">
+                <span class="dot"></span> HCP &mdash; Hexagonal Close-Packed
+            </button>
+            <button class="structure-btn" data-type="NaCl">
+                <span class="dot"></span> NaCl &mdash; Natrium Klorida
+            </button>
+            <button class="structure-btn" data-type="Diamond">
+                <span class="dot"></span> Intan &mdash; Diamond Cubic
+            </button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Pengaturan</div>
+        <div class="slider-group">
+            <div class="slider-header">
+                <span>Ukuran Atom</span>
+                <span class="val" id="atom-val">1.0</span>
+            </div>
+            <input type="range" id="atom-slider" min="0.3" max="2.5" step="0.05" value="1.0">
+        </div>
+        <div class="slider-group">
+            <div class="slider-header">
+                <span>Konstanta Kisi <b>a</b></span>
+                <span class="val" id="lattice-val">4.0</span>
+            </div>
+            <input type="range" id="lattice-slider" min="2.0" max="8.0" step="0.1" value="4.0">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Tampilan</div>
+        <label class="toggle">
+            <input type="checkbox" id="tog-cell" checked>
+            <span class="toggle-track"></span>
+            <span class="toggle-label">Menampilkan Unit Cell</span>
+        </label>
+        <label class="toggle">
+            <input type="checkbox" id="tog-bonds" checked>
+            <span class="toggle-track"></span>
+            <span class="toggle-label">Ikatan Atom</span>
+        </label>
+        <label class="toggle">
+            <input type="checkbox" id="tog-rotate">
+            <span class="toggle-track"></span>
+            <span class="toggle-label">Animasi Rotasi</span>
+        </label>
+        <label class="toggle">
+            <input type="checkbox" id="tog-coords">
+            <span class="toggle-track"></span>
+            <span class="toggle-label">Koordinat Atom</span>
+        </label>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Informasi Kristal</div>
+        <div class="info-grid">
+            <div class="info-row"><span class="lbl">Sistem Kristal</span><span class="val" id="i-sys">Kubik</span></div>
+            <div class="info-row"><span class="lbl">Space Group</span><span class="val" id="i-sg">Im-3m</span></div>
+            <div class="info-row"><span class="lbl">Bilangan Koordinasi</span><span class="val" id="i-cn">8</span></div>
+            <div class="info-row"><span class="lbl">Atom / Unit Cell</span><span class="val" id="i-apc">2</span></div>
+            <div class="info-row"><span class="lbl">Fraksi Packing</span><span class="val" id="i-pf">68%</span></div>
+        </div>
+    </div>
+
+    <div class="section" id="coord-section" style="display:none;">
+        <div class="section-title">Koordinat Atom</div>
+        <div class="coord-wrap">
+            <table class="coord-table">
+                <thead>
+                    <tr><th>#</th><th>Tipe</th><th>x</th><th>y</th><th>z</th></tr>
+                </thead>
+                <tbody id="coord-body"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== CANVAS ==================== -->
+<div id="canvas-container">
+    <div class="overlay-top">
+        <div class="title" id="ov-title">BCC</div>
+        <div class="subtitle" id="ov-sub">Body-Centered Cubic</div>
+    </div>
+    <div id="legend"></div>
+    <div class="instructions">
+        <span>🖱️ Klik & geser untuk rotasi</span>
+        <span>🔍 Scroll untuk zoom</span>
+    </div>
+</div>
+
+<!-- ==================== THREE.JS ==================== -->
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+}
+</script>
+<script type="module" src="script.js"></script>
+</body>
+</html>
