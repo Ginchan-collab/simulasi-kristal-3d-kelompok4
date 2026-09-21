@@ -164,7 +164,7 @@ function initThree() {
     const H = container.clientHeight;
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0a0a18);
+    scene.background = new THREE.Color(0xf0f9ff);
 
     camera = new THREE.PerspectiveCamera(48, W / H, 0.1, 200);
     camera.position.set(9, 7, 9);
@@ -173,7 +173,7 @@ function initThree() {
     renderer.setSize(W, H);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
+    renderer.toneMappingExposure = 1.0;
     renderer.localClippingEnabled = true; // Aktifkan clipping untuk potongan atom
     container.appendChild(renderer.domElement);
 
@@ -185,14 +185,14 @@ function initThree() {
     controls.minDistance = 2;
     controls.maxDistance = 150;
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-    const dir1 = new THREE.DirectionalLight(0xffffff, 0.9);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+    const dir1 = new THREE.DirectionalLight(0xffffff, 1.0);
     dir1.position.set(6, 12, 8);
     scene.add(dir1);
-    const dir2 = new THREE.DirectionalLight(0x6090c0, 0.35);
+    const dir2 = new THREE.DirectionalLight(0x93c5fd, 0.45);
     dir2.position.set(-6, -4, -6);
     scene.add(dir2);
-    const pt = new THREE.PointLight(0x4a9eff, 0.3, 30);
+    const pt = new THREE.PointLight(0x0284c7, 0.4, 30);
     pt.position.set(0, 8, 0);
     scene.add(pt);
 
@@ -402,7 +402,7 @@ function createCellWireframe(def, a, rep, mode) {
     const lineGeo = new THREE.BufferGeometry();
     lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
     return new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({
-        color: 0xffffff, transparent: true, opacity: 0.3
+        color: 0x0284c7, transparent: true, opacity: 0.65
     }));
 }
 
@@ -416,8 +416,8 @@ const cylGeo = new THREE.CylinderGeometry(1, 1, 1, 10, 1);
 function getMat(hex, planes) {
     return new THREE.MeshStandardMaterial({
         color: new THREE.Color(hex),
-        metalness: 0.35,
-        roughness: 0.38,
+        metalness: 0.2,
+        roughness: 0.35,
         clippingPlanes: planes,
         clipIntersection: false
     });
@@ -479,8 +479,8 @@ function buildCrystal() {
         const bondR = 0.06 * state.scale;
         
         const bondMat = new THREE.MeshStandardMaterial({
-            color: 0x888899, metalness: 0.2, roughness: 0.5,
-            transparent: true, opacity: 0.55,
+            color: 0x64748b, metalness: 0.1, roughness: 0.4,
+            transparent: true, opacity: 0.6,
             clippingPlanes: clipPlanes
         });
 
