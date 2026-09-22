@@ -8,6 +8,28 @@ const SQRT3 = Math.sqrt(3);
 const SQRT8_3 = Math.sqrt(8 / 3);
 
 const CRYSTALS = {
+    SC: {
+        label: 'SC', fullName: 'Simple Cubic (Kubik Sederhana)',
+        system: 'Kubik', sg: 'Pm\u0305 3m (#221)', cn: 6,
+        apc: { conv: 1, prim: 1 },
+        pf: '52% (0.52)',
+        defaultA: 4.0, cellType: 'cubic',
+        basis: [
+            { frac: [0,0,0], type: 'Po', color: '#E06C75', r: 0.45 }
+        ],
+        primBasis: [
+            { frac: [0,0,0], type: 'Po', color: '#E06C75', r: 0.45 }
+        ],
+        bondFrac: 1.05,
+        legend: [{ c: '#E06C75', l: 'Atom (Po)' }],
+        calc: (a) => ({
+            dist: a,
+            ratio: 0.5,
+            vol: a * a * a,
+            vecConv: [[a, 0, 0], [0, a, 0], [0, 0, a]],
+            vecPrim: [[a, 0, 0], [0, a, 0], [0, 0, a]]
+        })
+    },
     BCC: {
         label: 'BCC', fullName: 'Body-Centered Cubic',
         system: 'Kubik', sg: 'Im\u0305 3m (#229)', cn: 8,
